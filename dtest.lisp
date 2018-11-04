@@ -359,22 +359,43 @@
 ;;(defun det-masculine-singular (gn) (format nil "die ~A" gn))
 ;;(det-masculine-singular Bakter)
 
-(setf test1 '( 
-    (   liste1 (
-            ( ich  1 )
-            ( mich 2 )
-        )
-    )
 
-    (
-        liste2 (
-            you 2
-        )
-    )
-)
-)
+
+(setf test1 '((liste1 (( ich  41)
+                       ( mich 42)
+                       ( find 43)))
+              (liste2 (( you  31)))))
 
 (setf test2 (car (cdr (car test1))))
+(setf test3 (find '(find) test2 :test #'subsetp))
+
+(if (eq nil test3) 
+        (setf test4 "leer")
+        (setf test4 test3))
+
+(print test4)
+
 (loop for x in test2
     do (print (car x)))
 
+(write-char #\NewLine)
+(write-char #\NewLine)
+
+(princ "Ihre Eingabe: ")
+(setf test5 (read-line))
+
+(print test5)
+(setf test6 (concatenate 'string "(" test5 ")" ))
+(setf test7 (read-from-string test6))
+
+(print test7)
+
+
+
+(print relativPronomenSingular)
+
+
+;;(loop for x in relativPronomenSingular
+;;    do (print (car x)))
+
+(write-char #\NewLine)
